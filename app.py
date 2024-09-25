@@ -12,7 +12,7 @@ show_layer_toggle = True  # Set this to False to hide the "Map Layers" accordion
 
 # Main function to create and display the map
 def create_prettymap_app():
-    st.title("A Common Key")
+    st.title("Prettymaps Plotter")
 
     # Initialize session state if not already set
     if "plot_triggered" not in st.session_state:
@@ -25,8 +25,7 @@ def create_prettymap_app():
         location = st.text_input(
             "Location",
             "Elephant and Castle",
-            on_change=trigger_plot,
-            help="Enter any location you can find on OpenStreetMap (https://www.openstreetmap.org)"
+            help="Enter any location you can find on OpenStreetMap (https://www.openstreetmap.org)"  # Removed on_change
         )
     with col2:
         radius = st.slider("Radius", min_value=50, max_value=1500, value=300, step=50)
@@ -52,9 +51,7 @@ def create_prettymap_app():
     # Plot button
     if st.button("Plot Map"):
         trigger_plot()
-
-    # Only plot if the button was clicked or Enter was pressed
-    if st.session_state.plot_triggered:
+        # Only plot if the button was clicked
         try:
             # Filter layers and styles based on switches, ensure 'perimeter' is always on
             selected_layers, selected_styles = filter_layers_and_styles(layers_enabled)
@@ -63,11 +60,11 @@ def create_prettymap_app():
 
             # Generate and display the map
             create_map_plot(location, radius, A3_WIDTH, A3_HEIGHT, selected_layers, selected_styles)
-            st.session_state.plot_triggered = False
+            st.session_state.plot_triggered = False  # Reset the trigger after plotting
         except Exception as e:
             st.error(f"Failed to generate the map: {str(e)}")
 
-    # Display the generated plot
+    # Display the generated plot if it exists
     if "plot_fig" in st.session_state:
         st.pyplot(st.session_state["plot_fig"])
 
