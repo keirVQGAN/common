@@ -36,7 +36,7 @@ def get_layers():
             }
         },
         "landuse": {
-            "tags": {
+           "tags": {
                 "landuse": True
             #     "landuse": [
             #         "industrial", "commercial", "residential", "retail", 
@@ -49,7 +49,7 @@ def get_layers():
             #     "natural": [
             #         "bare_rock", "sand", "scree", "shingle", "fell", "beach"
             #     ]
-            # }
+            }
         },
         "water": {
             "tags": {
