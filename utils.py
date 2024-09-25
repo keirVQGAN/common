@@ -42,8 +42,8 @@ def filter_layers_and_styles(layers_enabled):
     layers = get_layers()
     styles = get_styles()
 
-    # Filter layers and styles based on what is enabled
-    filtered_layers = {k: v for k, v in layers.items() if layers_enabled.get(k, False)}
-    filtered_styles = {k: v for k, v in styles.items() if layers_enabled.get(k, False)}
+    # Filter layers and styles based on what is enabled, excluding "perimeter"
+    filtered_layers = {k: v for k, v in layers.items() if k == "perimeter" or layers_enabled.get(k, False)}
+    filtered_styles = {k: v for k, v in styles.items() if k == "perimeter" or layers_enabled.get(k, False)}
 
     return filtered_layers, filtered_styles
