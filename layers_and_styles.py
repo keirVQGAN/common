@@ -104,7 +104,7 @@ def get_styles():
             "alpha": 0.5,
             # "fill": None,       # No fill for landuse areas
             # "fc": "#b3b3b3",
-            "hatch": "\\\\\\\",
+            "hatch": '\\\\\\\',
             "ec": "#b3b3b3",  # Lighter grey for landuse areas
             "lw": 0.1,        # Line width for landuse areas
             "zorder": 0       # Layer order
