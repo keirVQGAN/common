@@ -89,13 +89,13 @@ def get_styles():
             # "fill": None,       # No fill for buildings
             "fc": "#ffffff",
             "ec": "#7a7a7a",  # Light grey for buildings edges
-            "lw": 0.7,        # Line width for buildings
+            "lw": 0.3,        # Line width for buildings
             "zorder": 4       # Layer order
         },
         "green_areas": {
             "fill": None,       # No fill for green areas
             "ec": "#a8d3c0",  # Light pastel green-grey for green areas edges
-            "lw": 0.4,        # Line width for green areas
+            "lw": 0.2,        # Line width for green areas
             "hatch": '//////',# Hatch pattern for green areas
             "zorder": 2       # Layer order
         },
@@ -104,20 +104,20 @@ def get_styles():
             # "fill": None,       # No fill for landuse areas
             "fc": "#b3b3b3",
             "ec": "#b3b3b3",  # Lighter grey for landuse areas
-            "lw": 0.7,        # Line width for landuse areas
+            "lw": 0.1,        # Line width for landuse areas
             "zorder": 0       # Layer order
         },
         "water": {
             "alpha": 0.3,       # Transparency for water
             "ec": "#cfd8dc",  # Very light blue-grey for water edges
-            "lw": 0.2,        # Line width for water bodies
+            "lw": 0.1,        # Line width for water bodies
             "hatch": '......', # Hatch pattern for water bodies
             "zorder": 1       # Layer order
         },
         "railways": {
             "fill": None,       # No fill for railways
             "ec": "#616161",  # Slightly darker grey for railways edges
-            "lw": 0.8,        # Line width for railways
+            "lw": 0.3,        # Line width for railways
             "zorder": 2       # Layer order
         },
         "perimeter": {
