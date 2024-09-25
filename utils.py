@@ -18,12 +18,8 @@ def save_plot_to_bytes(fig, file_format="png", dpi=300):
 
 # Cache the plot result to avoid redundant calculations if inputs haven't changed
 @st.cache_data(show_spinner=False)
-def create_map_plot(location, radius, width, height, dilate=300):
+def create_map_plot(location, radius, width, height, layers, styles, dilate=300):
     """Generate the map plot and store it in session state."""
-    # Fetch map layers and styles
-    layers = get_layers()
-    styles = get_styles()
-
     # Generate the map plot using prettymaps
     plot_result = prettymaps.plot(
         location,
@@ -40,3 +36,14 @@ def create_map_plot(location, radius, width, height, dilate=300):
 
     # Store the plot in session state
     st.session_state["plot_fig"] = plot_result.fig
+
+def filter_layers_and_styles(layers_enabled):
+    """Filter layers and styles based on user input."""
+    layers = get_layers()
+    styles = get_styles()
+
+    # Filter layers and styles based on what is enabled
+    filtered_layers = {k: v for k, v in layers.items() if layers_enabled.get(k, False)}
+    filtered_styles = {k: v for k, v in styles.items() if layers_enabled.get(k, False)}
+
+    return filtered_layers, filtered_styles
