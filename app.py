@@ -61,7 +61,7 @@ def create_prettymap_app():
         # Display the map again
         st.pyplot(st.session_state["plot_fig"])
 
-        st.subheader("Download Plot")
+        # st.subheader("Download Plot")
         col1, col2 = st.columns(2)
 
         with col1:
