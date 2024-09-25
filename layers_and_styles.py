@@ -117,7 +117,7 @@ def get_styles():
         "railways": {
             "fill": None,       # No fill for railways
             "ec": "#616161",  # Slightly darker grey for railways edges
-            "ls": ":"
+            "ls": ":",
             "lw": 0.8,        # Line width for railways
             "zorder": 3       # Layer order
         },
