@@ -65,7 +65,7 @@ def create_prettymap_app():
         col1, col2 = st.columns(2)
 
         with col1:
-            png_data = save_plot_to_bytes(st.session_state["plot_fig"], file_format="png")
+            png_data = save_plot_to_bytes(st.session_state["plot_fig"], file_format="png", dpi=300)
             st.download_button(
                 label="Download as PNG",
                 data=png_data,
