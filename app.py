@@ -25,7 +25,7 @@ def create_prettymap_app():
         location = st.text_input(
             "Location",
             "Elephant and Castle",
-            help="Enter any location you can find on OpenStreetMap (https://www.openstreetmap.org)"  # Removed on_change
+            help="Enter any location you can find on OpenStreetMap (https://www.openstreetmap.org)"
         )
     with col2:
         radius = st.slider("Radius", min_value=50, max_value=1500, value=300, step=50)
@@ -46,15 +46,22 @@ def create_prettymap_app():
             for i, layer in enumerate(layer_list):
                 if layer != "perimeter":  # Exclude "perimeter" from the toggle options
                     with cols[i % 3]:  # Use modulo to distribute the layers into columns
-                        layers_enabled[layer] = st.checkbox(f"{layer.capitalize()}", value=True)
+                        layers_enabled[layer] = st.checkbox(f"{layer.capitalize()}", value=True, key=layer)
+
+    # Store the layer selections in session state (without triggering a plot)
+    if "layers_enabled" not in st.session_state:
+        st.session_state["layers_enabled"] = layers_enabled
+    else:
+        st.session_state["layers_enabled"].update(layers_enabled)
 
     # Plot button
     if st.button("Plot Map"):
         trigger_plot()
+
         # Only plot if the button was clicked
         try:
             # Filter layers and styles based on switches, ensure 'perimeter' is always on
-            selected_layers, selected_styles = filter_layers_and_styles(layers_enabled)
+            selected_layers, selected_styles = filter_layers_and_styles(st.session_state["layers_enabled"])
             selected_layers["perimeter"] = get_layers()["perimeter"]  # Always include perimeter
             selected_styles["perimeter"] = get_styles()["perimeter"]  # Always include perimeter style
 
