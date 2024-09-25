@@ -14,14 +14,14 @@ def create_prettymap_app():
         st.session_state.plot_triggered = False
 
     # User input: Location, Radius, and Dilate (on the same row)
-    col1, col2, col3 = st.columns([2, 1, 1])
+    col1, col2 = st.columns([2, 1])
 
     with col1:
         location = st.text_input("Location", "Elephant and Castle", on_change=trigger_plot)
     with col2:
         radius = st.slider("Radius", min_value=50, max_value=1000, value=200, step=50)
-    with col3:
-        dilate = st.slider("Dilate", min_value=0, max_value=500, value=200, step=50)
+    # with col3:
+        # dilate = st.slider("Dilate", min_value=0, max_value=500, value=200, step=50)
 
     # Slugify the location to create a file-safe name
     slugified_location = slugify(location)
@@ -43,7 +43,7 @@ def create_prettymap_app():
             style=styles, 
             circle=True, 
             radius=radius, 
-            dilate=dilate,
+            dilate=300,
             preset=None
         )
 
