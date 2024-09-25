@@ -82,13 +82,14 @@ def get_styles():
             "ec": "#5c5c5c",  # Medium-light grey for streets edge
             "alpha": 0.5,
             "lw": 0.3,        # Line width for streets
-            "zorder": 4       # Layer order
+            "zorder": 3       # Layer order
         },
         "building": {
-            "fill": None,       # No fill for buildings
+            # "fill": None,       # No fill for buildings
+            "fc": "#ffffff",
             "ec": "#7a7a7a",  # Light grey for buildings edges
             "lw": 0.7,        # Line width for buildings
-            "zorder": 3       # Layer order
+            "zorder": 4       # Layer order
         },
         "green_areas": {
             "fill": None,       # No fill for green areas
@@ -98,7 +99,8 @@ def get_styles():
             "zorder": 2       # Layer order
         },
         "landuse": {
-            "fill": None,       # No fill for landuse areas
+            # "fill": None,       # No fill for landuse areas
+            "fc": "#b3b3b3",
             "ec": "#b3b3b3",  # Lighter grey for landuse areas
             "lw": 0.7,        # Line width for landuse areas
             "zorder": 1       # Layer order
