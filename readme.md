@@ -1,4 +1,4 @@
-# Prettymaps Plotter Streamlit App
+# A Common Key - Streamlit App
 
 This Streamlit application is a simple wrapper around the [Prettymaps](https://github.com/marceloprates/prettymaps) project, which allows users to generate custom map plots using data from [OpenStreetMap](https://www.openstreetmap.org/). The app provides an easy-to-use web interface to toggle map layers, customize plots, and download them in A3-sized PNG and SVG formats.
 
