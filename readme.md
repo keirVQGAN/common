@@ -15,12 +15,12 @@ This Streamlit application is a simple wrapper around the [Prettymaps](https://g
     git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
     ```
 
-2. Install the required dependencies:
+2. Install the required dependencies (requires Python 3.10):
     ```bash
     pip install -r requirements.txt
     ```
 
-3. Run the Streamlit app:
+3. Run the Streamlit app (requires Python 3.10):
     ```bash
     streamlit run app.py
     ```
