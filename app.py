@@ -58,10 +58,13 @@ def create_prettymap_app():
     # Plot button
     if st.button("Plot Map"):
         trigger_plot()
+        # Ensure that layers are selected by default if the user hasn't interacted with the switches
+        layers_enabled = st.session_state.get("layers_enabled", {layer: True for layer in get_layers() if layer != "perimeter"})
+
         # Only plot if the button was clicked
         try:
             # Filter layers and styles based on switches, ensure 'perimeter' is always on
-            selected_layers, selected_styles = filter_layers_and_styles(st.session_state["layers_enabled"])
+            selected_layers, selected_styles = filter_layers_and_styles(layers_enabled)
             selected_layers["perimeter"] = get_layers()["perimeter"]  # Always include perimeter
             selected_styles["perimeter"] = get_styles()["perimeter"]  # Always include perimeter style
 
