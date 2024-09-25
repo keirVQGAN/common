@@ -100,12 +100,12 @@ def get_styles():
             "zorder": 2       # Layer order
         },
         "landuse": {
-            "alpha": 0.3,
+            "alpha": 0.1,
             # "fill": None,       # No fill for landuse areas
             "fc": "#b3b3b3",
             "ec": "#b3b3b3",  # Lighter grey for landuse areas
             "lw": 0.7,        # Line width for landuse areas
-            "zorder": 1       # Layer order
+            "zorder": 0       # Layer order
         },
         "water": {
             "alpha": 0.3,       # Transparency for water
