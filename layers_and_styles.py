@@ -81,7 +81,7 @@ def get_styles():
         "streets": {
             "fc": "#adadad",  # Light grey streets fill
             "ec": "#5c5c5c",  # Medium-light grey for streets edge
-            "alpha": 0.5,
+            "alpha": 0.65,
             "lw": 0.3,        # Line width for streets
             "zorder": 3       # Layer order
         },
