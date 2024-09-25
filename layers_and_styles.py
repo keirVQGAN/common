@@ -37,18 +37,19 @@ def get_layers():
         },
         "landuse": {
             "tags": {
-                "landuse": [
-                    "industrial", "commercial", "residential", "retail", 
-                    "military", "railway", "brownfield", "cemetery", "construction",
-                    "farmland", "farmyard", "quarry"
-                ],
-                "leisure": [
-                    "marina", "stadium", "track", "sports_pitch", "fitness_station"
-                ],
-                "natural": [
-                    "bare_rock", "sand", "scree", "shingle", "fell", "beach"
-                ]
-            }
+                "landuse": True
+            #     "landuse": [
+            #         "industrial", "commercial", "residential", "retail", 
+            #         "military", "railway", "brownfield", "cemetery", "construction",
+            #         "farmland", "farmyard", "quarry"
+            #     ],
+            #     "leisure": [
+            #         "marina", "stadium", "track", "sports_pitch", "fitness_station"
+            #     ],
+            #     "natural": [
+            #         "bare_rock", "sand", "scree", "shingle", "fell", "beach"
+            #     ]
+            # }
         },
         "water": {
             "tags": {
