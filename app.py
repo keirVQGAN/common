@@ -8,7 +8,7 @@ A3_WIDTH = 16.5
 A3_HEIGHT = 11.7
 
 # Option to show or hide the toggle layers UI
-show_layer_toggle = False  # Set this to False to hide the "Map Layers" accordion
+show_layer_toggle = True  # Set this to False to hide the "Map Layers" accordion
 
 # Main function to create and display the map
 def create_prettymap_app():
