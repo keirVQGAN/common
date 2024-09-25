@@ -18,6 +18,9 @@ def create_prettymap_app():
     if "plot_triggered" not in st.session_state:
         st.session_state.plot_triggered = False
 
+    if "map_ready" not in st.session_state:
+        st.session_state.map_ready = False  # This controls when the map should be rendered
+
     # User input: Location, Radius, and other parameters
     col1, col2 = st.columns([2, 1])
 
@@ -48,7 +51,7 @@ def create_prettymap_app():
                     with cols[i % 3]:  # Use modulo to distribute the layers into columns
                         layers_enabled[layer] = st.checkbox(f"{layer.capitalize()}", value=True, key=layer)
 
-    # Store the layer selections in session state (without triggering a plot)
+    # Store the layer selections in session state without triggering the plot
     if "layers_enabled" not in st.session_state:
         st.session_state["layers_enabled"] = layers_enabled
     else:
@@ -57,6 +60,7 @@ def create_prettymap_app():
     # Plot button
     if st.button("Plot Map"):
         trigger_plot()
+        st.session_state.map_ready = True  # Set flag to true when the button is clicked
 
         # Only plot if the button was clicked
         try:
@@ -71,8 +75,8 @@ def create_prettymap_app():
         except Exception as e:
             st.error(f"Failed to generate the map: {str(e)}")
 
-    # Display the generated plot if it exists
-    if "plot_fig" in st.session_state:
+    # Only display the plot if the "map_ready" flag is set to True
+    if st.session_state.map_ready and "plot_fig" in st.session_state:
         st.pyplot(st.session_state["plot_fig"])
 
         col1, col2 = st.columns(2)
