@@ -18,6 +18,10 @@ def create_prettymap_app():
     if "plot_triggered" not in st.session_state:
         st.session_state.plot_triggered = False
 
+    # Initialize layers_enabled with default values (all True except for perimeter)
+    if "layers_enabled" not in st.session_state:
+        st.session_state["layers_enabled"] = {layer: True for layer in get_layers() if layer != "perimeter"}
+
     # User input: Location, Radius, and other parameters
     col1, col2 = st.columns([2, 1])
 
@@ -34,11 +38,10 @@ def create_prettymap_app():
     slugified_location = slugify(location)
 
     # Optional: Show layer toggles in an accordion, organized in rows and columns
-    layers_enabled = {}
     if show_layer_toggle:
         with st.expander("Map Layers", expanded=True):
             st.write("Enable or disable layers:")
-            
+
             # Layout the switches in a grid for better compactness
             layer_list = list(get_layers().keys())
             cols = st.columns(3)  # Create 3 columns for the layer switches
@@ -46,18 +49,15 @@ def create_prettymap_app():
             for i, layer in enumerate(layer_list):
                 if layer != "perimeter":  # Exclude "perimeter" from the toggle options
                     with cols[i % 3]:  # Use modulo to distribute the layers into columns
-                        layers_enabled[layer] = st.checkbox(f"{layer.capitalize()}", value=True, key=layer)
-
-    # Store the layer selections in session state (without triggering a plot)
-    if "layers_enabled" not in st.session_state:
-        st.session_state["layers_enabled"] = layers_enabled
-    else:
-        st.session_state["layers_enabled"].update(layers_enabled)
+                        st.session_state["layers_enabled"][layer] = st.checkbox(
+                            f"{layer.capitalize()}",
+                            value=st.session_state["layers_enabled"][layer],  # Retain previous state
+                            key=layer
+                        )
 
     # Plot button
     if st.button("Plot Map"):
         trigger_plot()
-
         # Only plot if the button was clicked
         try:
             # Filter layers and styles based on switches, ensure 'perimeter' is always on
