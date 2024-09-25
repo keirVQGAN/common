@@ -96,8 +96,8 @@ def get_styles():
             "fill": None,       # No fill for green areas
             "alpha": 0.5,
             "ec": "#a8d3c0",  # Light pastel green-grey for green areas edges
-            "lw": 0.2,        # Line width for green areas
-            "hatch": '//////',# Hatch pattern for green areas
+            "lw": 0,        # Line width for green areas
+            "hatch": '////////',# Hatch pattern for green areas
             "zorder": 2       # Layer order
         },
         "landuse": {
