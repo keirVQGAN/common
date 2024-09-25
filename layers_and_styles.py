@@ -102,7 +102,7 @@ def get_styles():
         },
         "landuse": {
             "alpha": 0.5,
-            # "fill": None,       # No fill for landuse areas
+            "fill": None,       # No fill for landuse areas
             # "fc": "#b3b3b3",
             "hatch": '//////',
             "ec": "#b3b3b3",  # Lighter grey for landuse areas
