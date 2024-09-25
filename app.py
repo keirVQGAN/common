@@ -19,7 +19,7 @@ def create_prettymap_app():
     with col1:
         location = st.text_input("Location", "Elephant and Castle", on_change=trigger_plot)
     with col2:
-        radius = st.slider("Radius", min_value=50, max_value=2000, value=200, step=50)
+        radius = st.slider("Radius", min_value=50, max_value=1500, value=300, step=50)
     # with col3:
         # dilate = st.slider("Dilate", min_value=0, max_value=500, value=200, step=50)
 
