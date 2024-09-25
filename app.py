@@ -7,9 +7,12 @@ from layers_and_styles import get_layers, get_styles  # Import layer and style f
 A3_WIDTH = 16.5
 A3_HEIGHT = 11.7
 
+# Option to show or hide the toggle layers UI
+show_layer_toggle = True  # Set this to False to hide the "Map Layers" accordion
+
 # Main function to create and display the map
 def create_prettymap_app():
-    st.title("A Common Key")
+    st.title("Prettymaps Plotter")
 
     # Initialize session state if not already set
     if "plot_triggered" not in st.session_state:
@@ -31,15 +34,21 @@ def create_prettymap_app():
     # Slugify the location to create a file-safe name
     slugified_location = slugify(location)
 
-    # Create an accordion for layer controls
-    with st.expander("Toggle Layers", expanded=True):
-        st.write("Enable or disable layers:")
-        layers_enabled = {}
-        
-        # Add switches for each layer
-        for layer in get_layers():
-            layers_enabled[layer] = st.checkbox(f"Enable {layer.capitalize()}", value=True)
-    
+    # Optional: Show layer toggles in an accordion, organized in rows and columns
+    layers_enabled = {}
+    if show_layer_toggle:
+        with st.expander("Map Layers", expanded=True):
+            st.write("Enable or disable layers:")
+            
+            # Layout the switches in a grid for better compactness
+            layer_list = list(get_layers().keys())
+            cols = st.columns(3)  # Create 3 columns for the layer switches
+
+            for i, layer in enumerate(layer_list):
+                if layer != "perimeter":  # Exclude "perimeter" from the toggle options
+                    with cols[i % 3]:  # Use modulo to distribute the layers into columns
+                        layers_enabled[layer] = st.checkbox(f"{layer.capitalize()}", value=True)
+
     # Plot button
     if st.button("Plot Map"):
         trigger_plot()
@@ -47,8 +56,10 @@ def create_prettymap_app():
     # Only plot if the button was clicked or Enter was pressed
     if st.session_state.plot_triggered:
         try:
-            # Filter layers and styles based on switches
+            # Filter layers and styles based on switches, ensure 'perimeter' is always on
             selected_layers, selected_styles = filter_layers_and_styles(layers_enabled)
+            selected_layers["perimeter"] = get_layers()["perimeter"]  # Always include perimeter
+            selected_styles["perimeter"] = get_styles()["perimeter"]  # Always include perimeter style
 
             # Generate and display the map
             create_map_plot(location, radius, A3_WIDTH, A3_HEIGHT, selected_layers, selected_styles)
