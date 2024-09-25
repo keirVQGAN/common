@@ -100,7 +100,7 @@ def get_styles():
             "zorder": 2       # Layer order
         },
         "landuse": {
-            "alpha": 0.3
+            "alpha": 0.3,
             # "fill": None,       # No fill for landuse areas
             "fc": "#b3b3b3",
             "ec": "#b3b3b3",  # Lighter grey for landuse areas
