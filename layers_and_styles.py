@@ -112,14 +112,13 @@ def get_styles():
             "ec": "#cfd8dc",  # Very light blue-grey for water edges
             "lw": 0.2,        # Line width for water bodies
             "hatch": '......', # Hatch pattern for water bodies
-            "zorder": 2       # Layer order
+            "zorder": 1       # Layer order
         },
         "railways": {
             "fill": None,       # No fill for railways
             "ec": "#616161",  # Slightly darker grey for railways edges
-            "ls": ":",
             "lw": 0.8,        # Line width for railways
-            "zorder": 3       # Layer order
+            "zorder": 2       # Layer order
         },
         "perimeter": {
             "fill": None,    # No fill for the perimeter
