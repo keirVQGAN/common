@@ -3,16 +3,16 @@ def get_layers():
         "streets": {
             "width": {
                 "motorway": 5,
-                "trunk": 5,
-                "primary": 4,
-                "secondary": 3,
+                "trunk": 4.5,
+                "primary": 3,
+                "secondary": 2.5,
                 "tertiary": 2,
                 "residential": 2,
-                "unclassified": 2,
-                "service": 1.3,
-                "path": 1,
-                "footway": 1,
-                "cycleway": 1
+                "unclassified": 1.5,
+                "service": 1,
+                "path": 0.8,
+                "footway": 0.8,
+                # "cycleway": 0.8
             }
         },
         "building": {
@@ -119,7 +119,7 @@ def get_styles():
         "railways": {
             "fill": None,       # No fill for railways
             "ec": "#616161",  # Slightly darker grey for railways edges
-            "lw": 0.3,        # Line width for railways
+            "lw": 0.25,        # Line width for railways
             "zorder": 2       # Layer order
         },
         "perimeter": {
