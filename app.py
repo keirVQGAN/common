@@ -12,7 +12,7 @@ show_layer_toggle = True  # Set this to False to hide the "Map Layers" accordion
 
 # Main function to create and display the map
 def create_prettymap_app():
-    st.title("Prettymaps Plotter")
+    st.title("A Common Key")
 
     # Initialize session state if not already set
     if "plot_triggered" not in st.session_state:
