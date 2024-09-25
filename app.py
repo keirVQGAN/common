@@ -17,11 +17,14 @@ def create_prettymap_app():
     col1, col2 = st.columns([2, 1])
 
     with col1:
-        location = st.text_input("Location", "Elephant and Castle", on_change=trigger_plot)
+        location = st.text_input(
+            "Location", 
+            "Elephant and Castle", 
+            on_change=trigger_plot,
+            help="Enter any location you can find on OpenStreetMap (https://www.openstreetmap.org)"  # Tooltip text
+        )
     with col2:
         radius = st.slider("Radius", min_value=50, max_value=1500, value=300, step=50)
-    # with col3:
-        # dilate = st.slider("Dilate", min_value=0, max_value=500, value=200, step=50)
 
     # Slugify the location to create a file-safe name
     slugified_location = slugify(location)
@@ -61,7 +64,6 @@ def create_prettymap_app():
         # Display the map again
         st.pyplot(st.session_state["plot_fig"])
 
-        # st.subheader("Download Plot")
         col1, col2 = st.columns(2)
 
         with col1:
