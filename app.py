@@ -65,7 +65,7 @@ def create_prettymap_app():
         col1, col2 = st.columns(2)
 
         with col1:
-            png_data = save_plot_to_bytes(st.session_state["plot_fig"], file_format="png", dpi=300)
+            png_data = save_plot_to_bytes(st.session_state["plot_fig"], file_format="png")
             st.download_button(
                 label="Download as PNG",
                 data=png_data,
@@ -91,7 +91,7 @@ def trigger_plot():
 def save_plot_to_bytes(fig, file_format="png"):
     """Save the plot as a bytes object for download."""
     buf = BytesIO()
-    fig.savefig(buf, format=file_format, bbox_inches='tight')
+    fig.savefig(buf, format=file_format, bbox_inches='tight', dpi=300)
     buf.seek(0)  # Rewind the buffer to the beginning
     return buf
 
